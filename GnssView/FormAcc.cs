@@ -45,7 +45,7 @@ namespace GnssView
             this.pictureBoxXy.Refresh();
         }
 
-        public void refreshAxis(int Keys, double Values)
+        public void RefreshAxis(int Keys, double Values)
         {
             fltsKeys.Add(Keys);
             fltsValues.Add((float)Values);

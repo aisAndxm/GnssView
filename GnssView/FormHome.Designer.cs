@@ -86,6 +86,7 @@
             this.hT1803ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHt103 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDebug = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemEarth = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDataConv = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +105,6 @@
             this.toolStripMenuItemContent = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.trackBarHome = new System.Windows.Forms.TrackBar();
-            this.toolStripMenuItemEarth = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripHome.SuspendLayout();
             this.menuStripHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHome)).BeginInit();
@@ -417,7 +417,7 @@
             this.toolStripMenuItemSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemSave.Image")));
             this.toolStripMenuItemSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-            this.toolStripMenuItemSave.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItemSave.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemSave.Text = "保存";
             this.toolStripMenuItemSave.Click += new System.EventHandler(this.toolStripMenuItemSave_Click);
             // 
@@ -429,23 +429,23 @@
             this.toolStripMenuItemLoadData.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemLoadData.Image")));
             this.toolStripMenuItemLoadData.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItemLoadData.Name = "toolStripMenuItemLoadData";
-            this.toolStripMenuItemLoadData.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItemLoadData.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemLoadData.Text = "加载";
             // 
             // toolStripMenuItemNmea
             // 
             this.toolStripMenuItemNmea.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemNmea.Image")));
             this.toolStripMenuItemNmea.Name = "toolStripMenuItemNmea";
-            this.toolStripMenuItemNmea.Size = new System.Drawing.Size(163, 22);
-            this.toolStripMenuItemNmea.Text = "NMEA-数据";
+            this.toolStripMenuItemNmea.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemNmea.Text = "nmea数据";
             this.toolStripMenuItemNmea.Click += new System.EventHandler(this.toolStripMenuItemLoad_Click);
             // 
             // toolStripMenuItemBasebandData
             // 
             this.toolStripMenuItemBasebandData.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemBasebandData.Image")));
             this.toolStripMenuItemBasebandData.Name = "toolStripMenuItemBasebandData";
-            this.toolStripMenuItemBasebandData.Size = new System.Drawing.Size(163, 22);
-            this.toolStripMenuItemBasebandData.Text = "Baseband-数据";
+            this.toolStripMenuItemBasebandData.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemBasebandData.Text = "baseband数据";
             this.toolStripMenuItemBasebandData.Click += new System.EventHandler(this.toolStripMenuItemLoad_Click);
             // 
             // ToolStripMenuItemTrue
@@ -456,7 +456,7 @@
             this.toolStripMenuItemLlaTrue});
             this.ToolStripMenuItemTrue.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItemTrue.Image")));
             this.ToolStripMenuItemTrue.Name = "ToolStripMenuItemTrue";
-            this.ToolStripMenuItemTrue.Size = new System.Drawing.Size(116, 22);
+            this.ToolStripMenuItemTrue.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItemTrue.Text = "真值";
             // 
             // toolStripMenuItemNmeaTrue
@@ -486,13 +486,13 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(113, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItemExit
             // 
             this.toolStripMenuItemExit.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemExit.Image")));
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemExit.Text = "退出(&X)";
             // 
             // toolStripMenuItemEdit
@@ -548,7 +548,7 @@
             // 
             this.toolStripMenuItemDistribution.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemDistribution.Image")));
             this.toolStripMenuItemDistribution.Name = "toolStripMenuItemDistribution";
-            this.toolStripMenuItemDistribution.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemDistribution.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemDistribution.Text = "卫星分布";
             this.toolStripMenuItemDistribution.Click += new System.EventHandler(this.toolStripMenuItemView_Click);
             // 
@@ -556,7 +556,7 @@
             // 
             this.toolStripMenuItemCn0.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemCn0.Image")));
             this.toolStripMenuItemCn0.Name = "toolStripMenuItemCn0";
-            this.toolStripMenuItemCn0.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemCn0.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemCn0.Text = "信号强度";
             this.toolStripMenuItemCn0.Click += new System.EventHandler(this.toolStripMenuItemCn0_Click);
             // 
@@ -564,7 +564,7 @@
             // 
             this.toolStripMenuItemOut.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemOut.Image")));
             this.toolStripMenuItemOut.Name = "toolStripMenuItemOut";
-            this.toolStripMenuItemOut.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOut.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemOut.Text = "串口输出";
             this.toolStripMenuItemOut.Click += new System.EventHandler(this.toolStripMenuItemOut_Click);
             // 
@@ -572,20 +572,20 @@
             // 
             this.toolStripMenuItem2D.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2D.Image")));
             this.toolStripMenuItem2D.Name = "toolStripMenuItem2D";
-            this.toolStripMenuItem2D.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2D.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItem2D.Text = "水平误差";
             this.toolStripMenuItem2D.Click += new System.EventHandler(this.toolStripMenuItem2D_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(128, 6);
             // 
             // toolStripMenuItemQtp
             // 
             this.toolStripMenuItemQtp.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemQtp.Image")));
             this.toolStripMenuItemQtp.Name = "toolStripMenuItemQtp";
-            this.toolStripMenuItemQtp.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemQtp.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemQtp.Text = "流程测试";
             this.toolStripMenuItemQtp.Click += new System.EventHandler(this.toolStripMenuItemQtp_Click);
             // 
@@ -593,7 +593,7 @@
             // 
             this.toolStripMenuItemRdss.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemRdss.Image")));
             this.toolStripMenuItemRdss.Name = "toolStripMenuItemRdss";
-            this.toolStripMenuItemRdss.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemRdss.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemRdss.Text = "RDSS通信";
             this.toolStripMenuItemRdss.Click += new System.EventHandler(this.toolStripMenuItemRdss_Click);
             // 
@@ -601,7 +601,7 @@
             // 
             this.toolStripMenuItemAcc.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemAcc.Image")));
             this.toolStripMenuItemAcc.Name = "toolStripMenuItemAcc";
-            this.toolStripMenuItemAcc.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAcc.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemAcc.Text = "精度信息";
             this.toolStripMenuItemAcc.Click += new System.EventHandler(this.toolStripMenuItemAcc_Click);
             // 
@@ -609,14 +609,14 @@
             // 
             this.toolStripMenuItemCtrl.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemCtrl.Image")));
             this.toolStripMenuItemCtrl.Name = "toolStripMenuItemCtrl";
-            this.toolStripMenuItemCtrl.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemCtrl.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemCtrl.Text = "控制命令";
             this.toolStripMenuItemCtrl.Click += new System.EventHandler(this.toolStripMenuItemCtrl_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(128, 6);
             // 
             // toolStripMenuItemProj
             // 
@@ -626,7 +626,7 @@
             this.toolStripMenuItemHt103});
             this.toolStripMenuItemProj.Image = global::GnssView.Properties.Resources.项目;
             this.toolStripMenuItemProj.Name = "toolStripMenuItemProj";
-            this.toolStripMenuItemProj.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemProj.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemProj.Text = "项目";
             // 
             // toolStripMenuItemHt1902
@@ -656,9 +656,17 @@
             // 
             this.toolStripMenuItemDebug.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemDebug.Image")));
             this.toolStripMenuItemDebug.Name = "toolStripMenuItemDebug";
-            this.toolStripMenuItemDebug.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemDebug.Size = new System.Drawing.Size(131, 22);
             this.toolStripMenuItemDebug.Text = "调试";
             this.toolStripMenuItemDebug.Click += new System.EventHandler(this.toolStripMenuItemDebug_Click);
+            // 
+            // toolStripMenuItemEarth
+            // 
+            this.toolStripMenuItemEarth.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemEarth.Image")));
+            this.toolStripMenuItemEarth.Name = "toolStripMenuItemEarth";
+            this.toolStripMenuItemEarth.Size = new System.Drawing.Size(131, 22);
+            this.toolStripMenuItemEarth.Text = "地图";
+            this.toolStripMenuItemEarth.Click += new System.EventHandler(this.toolStripMenuItemEarth_Click);
             // 
             // toolStripMenuItemTool
             // 
@@ -676,7 +684,7 @@
             // 
             this.toolStripMenuItemUpdate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemUpdate.Image")));
             this.toolStripMenuItemUpdate.Name = "toolStripMenuItemUpdate";
-            this.toolStripMenuItemUpdate.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemUpdate.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenuItemUpdate.Text = "固件升级";
             this.toolStripMenuItemUpdate.Click += new System.EventHandler(this.toolStripMenuItemUpdate_Click);
             // 
@@ -684,7 +692,7 @@
             // 
             this.toolStripMenuItemDataConv.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemDataConv.Image")));
             this.toolStripMenuItemDataConv.Name = "toolStripMenuItemDataConv";
-            this.toolStripMenuItemDataConv.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemDataConv.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenuItemDataConv.Text = "数据转换";
             this.toolStripMenuItemDataConv.Click += new System.EventHandler(this.toolStripMenuItemDataConv_Click);
             // 
@@ -692,7 +700,7 @@
             // 
             this.toolStripMenuItemMsgCheck.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemMsgCheck.Image")));
             this.toolStripMenuItemMsgCheck.Name = "toolStripMenuItemMsgCheck";
-            this.toolStripMenuItemMsgCheck.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMsgCheck.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenuItemMsgCheck.Text = "电文检测";
             this.toolStripMenuItemMsgCheck.Click += new System.EventHandler(this.toolStripMenuItemMsgCheck_Click);
             // 
@@ -700,7 +708,7 @@
             // 
             this.toolStripMenuItemPps.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemPps.Image")));
             this.toolStripMenuItemPps.Name = "toolStripMenuItemPps";
-            this.toolStripMenuItemPps.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemPps.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenuItemPps.Text = "秒脉冲";
             this.toolStripMenuItemPps.Click += new System.EventHandler(this.toolStripMenuItemPps_Click);
             // 
@@ -708,7 +716,7 @@
             // 
             this.toolStripMenuItemGetMsg.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemGetMsg.Image")));
             this.toolStripMenuItemGetMsg.Name = "toolStripMenuItemGetMsg";
-            this.toolStripMenuItemGetMsg.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemGetMsg.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenuItemGetMsg.Text = "获取电文";
             this.toolStripMenuItemGetMsg.Click += new System.EventHandler(this.toolStripMenuItemGetMsg_Click);
             // 
@@ -813,14 +821,6 @@
             this.trackBarHome.TabIndex = 17;
             this.trackBarHome.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarHome.ValueChanged += new System.EventHandler(this.trackBarHome_ValueChanged);
-            // 
-            // toolStripMenuItemEarth
-            // 
-            this.toolStripMenuItemEarth.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemEarth.Image")));
-            this.toolStripMenuItemEarth.Name = "toolStripMenuItemEarth";
-            this.toolStripMenuItemEarth.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItemEarth.Text = "地图";
-            this.toolStripMenuItemEarth.Click += new System.EventHandler(this.toolStripMenuItemEarth_Click);
             // 
             // FormHome
             // 

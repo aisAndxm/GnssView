@@ -53,6 +53,7 @@ namespace GnssView
         update      = 14,
         pps         = 15,
         Ht103       = 16,
+        baseband    = 17,
     }
 
     /* GNSS类型 */

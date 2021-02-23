@@ -45,6 +45,7 @@ namespace GnssView
         private replay.FormReplay formReplay;
         private project.FormHT1902 formHt1902;
         private project.FormHt103 formHt103;
+        private FormEarth formEarth;
 
         Size homeSize;
         readonly int marginWidth = 4;/*像素点*/
@@ -99,9 +100,10 @@ namespace GnssView
 
         /*大数据存储，用于load文件使用*/
         public int nmeaLoadSecond = 0;
-        readonly List<byte[]> loadDataMemo = new List<byte[]>();
-        public bool bRefreshFlag = true;
+        private List<byte[]> loadDataMemory = new List<byte[]>();
+        public List<int> loadDataUtc = new List<int>();
         private int loadByteLen = 0;
+        public int loadDataType = 0;/*1:加载完成 2:nmea 3:baseband*/
 
 
         /// <summary>
@@ -442,7 +444,7 @@ namespace GnssView
                 if (serialPort0.IsOpen) serialClose();
                 else
                 {
-                    bRefreshFlag = true;
+                    loadDataType = 0;
                     uartRxBuf.wr = 0;
                     uartRxBuf.rd = 0;
                     uartRxBuf.rdOut = 0;
@@ -619,32 +621,6 @@ namespace GnssView
                     else if ((headTmp[0] == '$') && (headTmp[3] == 'G') && (headTmp[4] == 'G') && (headTmp[5] == 'A'))/*nmea0183*/
                     {
                         cmdHeadType = e_strHeadId.Gga;
-
-                        if (!bRefreshFlag)/*加载数据时存储数据使用*/
-                        {
-                            int bsLen;
-                            if (uartRxBuf.rd > loadByteLen)
-                                bsLen = uartRxBuf.rd - loadByteLen;
-                            else
-                                bsLen = uartVar.MSG_MAX_LEN - loadByteLen + uartRxBuf.rd;
-
-                            if (bsLen > 1)
-                            {
-
-                                byte[] bsTmp = new byte[bsLen];
-                                if (uartRxBuf.rd > loadByteLen)
-                                    Array.Copy(uartRxBuf.buf, loadByteLen, bsTmp, 0, bsLen);
-                                else
-                                {
-                                    Array.Copy(uartRxBuf.buf, loadByteLen, bsTmp, 0, uartVar.MSG_MAX_LEN - loadByteLen);
-                                    Array.Copy(uartRxBuf.buf, 0, bsTmp, uartVar.MSG_MAX_LEN - loadByteLen, uartRxBuf.rd);
-                                }
-                                loadDataMemo.Add(bsTmp);
-                                nmeaLoadSecond++;
-                                loadByteLen = uartRxBuf.rd;
-                            }
-                        }
-
                     }
                     else if ((headTmp[0] == '$') && (headTmp[3] == 'G') && (headTmp[4] == 'S') && (headTmp[5] == 'A'))
                     {
@@ -670,6 +646,10 @@ namespace GnssView
                     {
                         cmdHeadType = e_strHeadId.V21;
                     }
+                    else if ((headTmp[0] == '~') && (headTmp[1] == '~') && (headTmp[2] == '~') && (headTmp[3] == '~') && (headTmp[4] == '~'))
+                    {
+                        cmdHeadType = e_strHeadId.baseband;
+                    }
                     else
                     {
                         uartRxBuf.rd++;
@@ -679,6 +659,26 @@ namespace GnssView
 
                     cmdMsgPos = 0;
                     Array.Clear(cmdMsgBuf, 0, cmdMsgBuf.Length);
+
+                    if ((((cmdHeadType == e_strHeadId.Gga) && (loadDataType == 2))
+                        || ((cmdHeadType == e_strHeadId.baseband) && (loadDataType == 3))))/*加载数据时存储数据使用*/
+                    {
+                        if (uartRxBuf.rd > loadByteLen)/*截取读到之前的数据*/
+                        {
+                            byte[] bsTmp = new byte[uartRxBuf.rd - loadByteLen];
+                            Array.Copy(uartRxBuf.buf, loadByteLen, bsTmp, 0, uartRxBuf.rd - loadByteLen);
+                            loadDataMemory.Add(bsTmp);
+                        }
+                        else if (uartRxBuf.rd < loadByteLen)
+                        {
+                            byte[] bsTmp = new byte[uartVar.MSG_MAX_LEN - loadByteLen + uartRxBuf.rd];
+                            Array.Copy(uartRxBuf.buf, loadByteLen, bsTmp, 0, uartVar.MSG_MAX_LEN - loadByteLen);
+                            Array.Copy(uartRxBuf.buf, 0, bsTmp, uartVar.MSG_MAX_LEN - loadByteLen, uartRxBuf.rd);
+                            loadDataMemory.Add(bsTmp);
+                        }
+                        nmeaLoadSecond++;
+                        loadByteLen = uartRxBuf.rd;
+                    }
                 }
                 else
                 {
@@ -792,6 +792,8 @@ namespace GnssView
                                 if ((formPps != null) && (!formPps.IsDisposed))
                                     formPps.ppsMsgPro(cmdMsgBuf, cmdMsgPos);
                                 break;
+                            case e_strHeadId.baseband:
+                                break;
                             default:
                                 break;
                         }
@@ -821,6 +823,23 @@ namespace GnssView
         /// </summary>
         private void toolStripMenuItemLoad_Click(object sender, EventArgs e)
         {
+            ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+            if (tsmi.Text.Contains("nmea"))
+                loadDataType = 2;
+            else if (tsmi.Text.Contains("baseband"))
+                loadDataType = 3;
+            else
+                return;
+
+            serialClose();
+            if (saveFileFlag)/*加载和存储不同时打开*/
+            {
+                saveFileFlag = false;
+                toolStripBtnSave.Text = "Save";
+            }
+            uartRxBuf.wr = 0;
+            uartRxBuf.rd = 0;
+
             OpenFileDialog dialog = new OpenFileDialog
             {
                 Title = "加载文件",
@@ -830,21 +849,13 @@ namespace GnssView
                 AutoUpgradeEnabled = false
             };
 
-            serialClose();
-            if (saveFileFlag)
-            {
-                saveFileFlag = false;
-                toolStripBtnSave.Text = "Save";
-            }
-            uartRxBuf.wr = 0;
-            uartRxBuf.rd = 0;
-            bRefreshFlag = false;
-
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string localFilePath = dialog.FileName.ToString();
                 nmeaLoadSecond = 0;
+                loadDataUtc.Clear();
+                trackBarHome.Enabled = false;
 
+                string localFilePath = dialog.FileName.ToString();
                 try
                 {
                     /*创建一个 StreamReader 的实例来读取文件，using 语句也能关闭 StreamReader*/
@@ -896,7 +907,8 @@ namespace GnssView
                     uartRxBuf.rd = 0;
                     trackBarHome.Enabled = true;
                     trackBarHome.Maximum = nmeaLoadSecond;
-                    trackBarHome.Value = nmeaLoadSecond;
+                    trackBarHome.Value = nmeaLoadSecond - 1;
+                    loadDataType = 1;
                 }
                 catch
                 { }
@@ -916,10 +928,10 @@ namespace GnssView
         /// <param name="e"></param>
         private void trackBarHome_ValueChanged(object sender, EventArgs e)
         {
-            if ((trackBarHome.Value < 1) || (nmeaLoadSecond > trackBarHome.Maximum)) return;
+            int valueTmp = trackBarHome.Value;
+            if ((valueTmp < 0) || (valueTmp > trackBarHome.Maximum)) return;
 
-            nmeaLoadSecond = trackBarHome.Value;
-            byte[] bytesTmp = loadDataMemo[nmeaLoadSecond - 1];
+            byte[] bytesTmp = loadDataMemory[valueTmp];
             int wr = uartRxBuf.wr;
             int rxLen = bytesTmp.Length;
 
@@ -940,14 +952,13 @@ namespace GnssView
                 /*加载模式时都在滚动条事件中刷新，在GGA中不刷新，实时数据时收到GGA后刷新*/
                 if (formOut != null && !formOut.IsDisposed)/*发送唤醒线程信号量*/
                 {
-                    formOut.clearOut();
-                    _autoResetOut.Set();
+                    formOut.ClearOut();
+                    formOut.textBoxShow();
                 }
-                if (formCn0 != null && !formCn0.IsDisposed) formCn0.refreshCn0();
+                if (formCn0 != null && !formCn0.IsDisposed) formCn0.RefreshCn0();
                 if (formView != null && !formView.IsDisposed) formView.RefreshView();
-                if (form2D != null && !form2D.IsDisposed) form2D.refresh2D();
-                if ((formAcc != null) && (!formAcc.IsDisposed)) formAcc.refreshAxis(navGgaMsg.ggaCount, navGgaMsg.acc3D);
-                //if (formPps == null || formPps.IsDisposed) toolStripMenuItemPps.PerformClick();
+                if (form2D != null && !form2D.IsDisposed) form2D.Refresh2D();
+                if ((formAcc != null) && (!formAcc.IsDisposed)) formAcc.RefreshAxis(navGgaMsg.ggaCount, navGgaMsg.acc3D);
             }
             catch { }
         }
@@ -1016,9 +1027,9 @@ namespace GnssView
 
         private void toolStripMenuItemSave_Click(object sender, EventArgs e)
         {
-            if (!bRefreshFlag)/*加载数据使能*/
+            if (loadDataType > 0)/*加载数据使能*/
             {
-                bRefreshFlag = true;
+                loadDataType = 0;
                 trackBarHome.Enabled = false;
                 toolStripBtnSave.Text = "Save";
             }
@@ -1471,7 +1482,20 @@ namespace GnssView
 
         private void toolStripMenuItemEarth_Click(object sender, EventArgs e)
         {
-
+            if (formEarth == null || formEarth.IsDisposed)
+            {
+                formEarth = new FormEarth(this)
+                {
+                    MdiParent = this
+                };
+                formEarth.Location = new Point(homeSize.Width - formEarth.Width / 2, homeSize.Height - formEarth.Height / 2);
+                formEarth.Show();
+            }
+            else if (formEarth.WindowState == FormWindowState.Minimized)
+            {
+                formEarth.WindowState = FormWindowState.Normal;
+            }
+            formEarth.BringToFront();//将控件放置所有控件最前端
         }
 
         /// <summary>
@@ -1479,7 +1503,7 @@ namespace GnssView
         /// </summary>
         private void toolStripBtnCls_Click(object sender, EventArgs e)
         {
-            if (formOut != null && !formOut.IsDisposed) formOut.clearOut();
+            if (formOut != null && !formOut.IsDisposed) formOut.ClearOut();
             if (formAcc != null && !formAcc.IsDisposed) formAcc.clearGnss();
             if (formCn0 != null && !formCn0.IsDisposed) formCn0.clearCn0();
             if (form2D != null && !form2D.IsDisposed) form2D.clear2D();

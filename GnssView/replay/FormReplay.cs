@@ -29,14 +29,26 @@ namespace GnssView.replay
 
         private void btnSkip_Click(object sender, EventArgs e)
         {
-            int value = homeTmp.trackValueCtrl;
             try
             {
-                homeTmp.trackValueCtrl = value + 100;
+                if (!int.TryParse(textBoxSkipUtc.Text, out int value)) return;
+                for (int i = 0; i < homeTmp.loadDataUtc.Count(); i++)
+                {
+                    if (homeTmp.loadDataUtc[i] == value)
+                    {
+                        homeTmp.trackValueCtrl = i;
+                        break;
+                    }
+                }
             }
             catch
             { }
             
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

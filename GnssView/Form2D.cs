@@ -38,10 +38,10 @@ namespace GnssView
             float pointRadius = 2f;
             int dataCount;
 
-            if (homeTmp.bRefreshFlag)
-                dataCount = homeTmp.posInfos.Count;/*实时数据使用当前最新数量*/
+            if (homeTmp.loadDataType > 0)
+                dataCount = homeTmp.trackValueCtrl;/*加载数据使用当前位置*/
             else
-                dataCount = homeTmp.nmeaLoadSecond;/*加载数据使用当前位置*/
+                dataCount = homeTmp.posInfos.Count;/*实时数据使用当前最新数量*/
 
             if ((dataCount < 1) || (dataCount > homeTmp.posInfos.Count)) return;
 
@@ -138,10 +138,10 @@ namespace GnssView
                 else if (radiusM >= 1f) radiusM -= e.Delta / 120f;
                 if (radiusM < 0.1) radiusM = 0.1f;
             }
-            refresh2D();
+            Refresh2D();
         }
 
-        public void refresh2D()
+        public void Refresh2D()
         {
             splitContainerControl2D.Panel1.Refresh();
         }

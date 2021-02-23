@@ -65,46 +65,54 @@ namespace GnssView
         }
 
         /// <summary>
+        /// 串口显示
+        /// </summary>
+        public void textBoxShow()
+        {
+            int rxLen = 0;
+            int wr = homeTmp.uartRxBuf.wr;
+            int rdOut = homeTmp.uartRxBuf.rdOut;
+            if (wr == rdOut) return;
+
+            if (rdOut < wr)
+            {
+                rxLen = wr - rdOut;
+                standardShowFormat(homeTmp.uartRxBuf.buf, rdOut, rxLen);
+            }
+            else if (rdOut > wr)
+            {
+                rxLen = uartVar.MSG_MAX_LEN - rdOut;
+                standardShowFormat(homeTmp.uartRxBuf.buf, rdOut, uartVar.MSG_MAX_LEN - rdOut);
+                standardShowFormat(homeTmp.uartRxBuf.buf, 0, wr);
+                rxLen += wr;
+            }
+            homeTmp.uartRxBuf.rdOut = wr;
+
+            //显示接收字长
+            try
+            {
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    if (int.TryParse(toolStripStatusLabelRxLen.Text.ToString(), out int lenTmp))
+                    {
+                        if (lenTmp < 0 || lenTmp > 2147483647) lenTmp = 0;
+                        toolStripStatusLabelRxLen.Text = (lenTmp + rxLen).ToString();
+                    }
+                }));
+            }
+            catch { }
+
+        }
+
+        /// <summary>
         /// 显示串口数据线程
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void thShowUart()
+        private void thShowUart()
         {
             while (true)
             {
                 homeTmp._autoResetOut.WaitOne();
-                int rxLen = 0;
-                int wr = homeTmp.uartRxBuf.wr;
-                int rdOut = homeTmp.uartRxBuf.rdOut;
-                if (wr == rdOut) continue;
-
-                if (rdOut < wr)
-                {
-                    rxLen = wr - rdOut;
-                    standardShowFormat(homeTmp.uartRxBuf.buf, rdOut, rxLen);
-                }
-                else if (rdOut > wr)
-                {
-                    rxLen = uartVar.MSG_MAX_LEN - rdOut;
-                    standardShowFormat(homeTmp.uartRxBuf.buf, rdOut, uartVar.MSG_MAX_LEN - rdOut);
-                    standardShowFormat(homeTmp.uartRxBuf.buf, 0, wr);
-                    rxLen += wr;
-                }
-                homeTmp.uartRxBuf.rdOut = wr;
-
-                //显示接收字长
-                int lenTmp = 0;
-                try
-                {
-                    this.Invoke(new MethodInvoker(delegate
-                    {
-                        lenTmp = int.Parse(toolStripStatusLabelRxLen.Text.ToString());
-                        if (lenTmp < 0 || lenTmp > 2147483647) lenTmp = 0;
-                        toolStripStatusLabelRxLen.Text = (lenTmp + rxLen).ToString();
-                    }));
-                }
-                catch { }
+                textBoxShow();
             }
         }
 
@@ -135,7 +143,7 @@ namespace GnssView
             { }
         }
 
-        public void clearOut()
+        public void ClearOut()
         {
             textBoxOut.Clear();
             toolStripStatusLabelRxLen.Text = "0";

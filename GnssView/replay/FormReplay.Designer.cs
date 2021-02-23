@@ -29,10 +29,13 @@ namespace GnssView.replay
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReplay));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSkip = new System.Windows.Forms.Button();
             this.btnStatusCtrl = new System.Windows.Forms.Button();
             this.textBoxSkipUtc = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,10 +79,16 @@ namespace GnssView.replay
             this.textBoxSkipUtc.TabIndex = 0;
             this.textBoxSkipUtc.Text = "UTC(HHMMSS)";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormReplay
             // 
             this.ClientSize = new System.Drawing.Size(584, 261);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormReplay";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -93,5 +102,6 @@ namespace GnssView.replay
         private System.Windows.Forms.Button btnSkip;
         private System.Windows.Forms.Button btnStatusCtrl;
         private System.Windows.Forms.TextBox textBoxSkipUtc;
+        private System.Windows.Forms.Timer timer1;
     }
 }

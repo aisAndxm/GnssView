@@ -148,16 +148,16 @@ namespace GnssView
             if ((check & 0xff) != checkTmp) return;
 
             /*收到GGA之后刷新显示图*/
-            if (homeTmp.bRefreshFlag)
+            if (homeTmp.loadDataType == 0)
             {
                 try
                 {
                     this.Invoke(new MethodInvoker(delegate
                     {
-                        if (homeTmp.formCn0 != null && !homeTmp.formCn0.IsDisposed) homeTmp.formCn0.refreshCn0();
+                        if (homeTmp.formCn0 != null && !homeTmp.formCn0.IsDisposed) homeTmp.formCn0.RefreshCn0();
                         if (homeTmp.formView != null && !homeTmp.formView.IsDisposed) homeTmp.formView.RefreshView();
-                        if (homeTmp.form2D != null && !homeTmp.form2D.IsDisposed) homeTmp.form2D.refresh2D();
-                        if ((homeTmp.formAcc != null) && (!homeTmp.formAcc.IsDisposed)) homeTmp.formAcc.refreshAxis(homeTmp.navGgaMsg.ggaCount, homeTmp.navGgaMsg.acc3D);
+                        if (homeTmp.form2D != null && !homeTmp.form2D.IsDisposed) homeTmp.form2D.Refresh2D();
+                        if ((homeTmp.formAcc != null) && (!homeTmp.formAcc.IsDisposed)) homeTmp.formAcc.RefreshAxis(homeTmp.navGgaMsg.ggaCount, homeTmp.navGgaMsg.acc3D);
                     }));
                 }
                 catch { }
@@ -178,24 +178,26 @@ namespace GnssView
             homeTmp.navGgaMsg.alt = double.Parse(listData[9]);//高度
             homeTmp.navGgaMsg.valid = true;
 
-            /*3D精度存储以后会更新删除这个变量*/
-            if ((homeTmp.formAcc != null) && (!homeTmp.formAcc.IsDisposed))
+            if (homeTmp.loadDataType != 1)
             {
-                homeTmp.navGgaMsg.acc3D = acc3D(homeTmp.navGgaMsg.lat, homeTmp.navGgaMsg.lon, homeTmp.navGgaMsg.alt);
-                homeTmp.navGgaMsg.ggaCount++;
+                /*3D精度存储以后会更新删除这个变量*/
+                if ((homeTmp.formAcc != null) && (!homeTmp.formAcc.IsDisposed))
+                {
+                    homeTmp.navGgaMsg.acc3D = acc3D(homeTmp.navGgaMsg.lat, homeTmp.navGgaMsg.lon, homeTmp.navGgaMsg.alt);
+                    homeTmp.navGgaMsg.ggaCount++;
+                }
+
+                /*2D精度画图变量*/
+                posTmp.lat = homeTmp.navGgaMsg.lat;
+                posTmp.lon = homeTmp.navGgaMsg.lon;
+                posTmp.alt = homeTmp.navGgaMsg.alt;
+                homeTmp.posInfos.Add(posTmp);
+
+                homeTmp.loadDataUtc.Add((int)homeTmp.navGgaMsg.utcTime);
             }
-
-            /*2D精度画图变量*/
-            posTmp.lat = homeTmp.navGgaMsg.lat;
-            posTmp.lon = homeTmp.navGgaMsg.lon;
-            posTmp.alt = homeTmp.navGgaMsg.alt;
-            homeTmp.posInfos.Add(posTmp);
-
             /*收到GGA语句之后清空GSA和GSV*/
             homeTmp.navGsaMsg.Clear();
             homeTmp.navGsvMsg.Clear();
-
-
         }
 
         /// <summary>
@@ -482,7 +484,7 @@ namespace GnssView
         /// <summary>
         /// 刷新chart
         /// </summary>
-        public void refreshCn0()
+        public void RefreshCn0()
         {
             chartCn0.Refresh();
         }

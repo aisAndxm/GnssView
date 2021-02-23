@@ -307,9 +307,4 @@ E:\View\C#\GnssView\GnssView-V2.0\GnssView2019\GnssView\obj\x86\Debug\GnssView.r
 E:\View\C#\GnssView\GnssView-V2.0\GnssView2019\GnssView\obj\x86\Debug\GnssView.project.FormHt103.resources
 E:\View\C#\GnssView\GnssView-V2.0\GnssView2019\GnssView\obj\x86\Debug\GnssView.project.FormHT1902.resources
 E:\View\C#\GnssView\GnssView-V2.0\GnssView2019\GnssView\obj\x86\Debug\GnssView.csprojAssemblyReference.cache
-E:\work\GnssView2019\GnssView2019\GnssView\bin\Debug\GnssView\GnssView.exe.config
-E:\work\GnssView2019\GnssView2019\GnssView\obj\x86\Debug\GnssView.exe
-E:\work\GnssView2019\GnssView2019\GnssView\obj\x86\Debug\GnssView.pdb
-E:\view\c#\GnssView\GnssView\bin\Debug\GnssView\GnssView.exe.config
-E:\view\c#\GnssView\GnssView\obj\x86\Debug\GnssView.exe
-E:\view\c#\GnssView\GnssView\obj\x86\Debug\GnssView.pdb
+E:\View\C#\GnssView\GnssView-V2.0\GnssView2019\GnssView\obj\x86\Debug\GnssView.FormEarth.resources
