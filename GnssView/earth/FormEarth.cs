@@ -23,7 +23,7 @@ namespace GnssView
         private void FormEarth_Load(object sender, EventArgs e)
         {
             //html文件Copy到程序根目录
-            this.webBrowserBaidu.Navigate(AppDomain.CurrentDomain.BaseDirectory + "BaiDuEarth.html", false);
+            this.webBrowserBaidu.Navigate(AppDomain.CurrentDomain.BaseDirectory + "html/BaiDuEarth.html", false);
         }
     }
 }
