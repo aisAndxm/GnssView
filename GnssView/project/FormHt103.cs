@@ -61,7 +61,7 @@ namespace GnssView.project
                     label50.Text = (BitConverter.ToUInt16(data, 52) * 0.01).ToString("f8");
                     label52.Text = (BitConverter.ToUInt16(data, 54) * 0.01).ToString("f8");
                     label54.Text = (BitConverter.ToUInt16(data, 56) * 0.01).ToString("f8");
-                    label56.Text = (BitConverter.ToUInt16(data, 58) * 0.1).ToString("f8");
+                    label56.Text = (BitConverter.ToInt16(data, 58) * 0.1).ToString("f8");
                 }));
             }
             catch { }
