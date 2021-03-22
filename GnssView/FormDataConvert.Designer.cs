@@ -275,6 +275,7 @@
             // richTextBoxU
             // 
             this.richTextBoxU.Location = new System.Drawing.Point(125, 250);
+            this.richTextBoxU.Multiline = false;
             this.richTextBoxU.Name = "richTextBoxU";
             this.richTextBoxU.Size = new System.Drawing.Size(183, 23);
             this.richTextBoxU.TabIndex = 38;
@@ -292,6 +293,7 @@
             // richTextBoxN
             // 
             this.richTextBoxN.Location = new System.Drawing.Point(125, 221);
+            this.richTextBoxN.Multiline = false;
             this.richTextBoxN.Name = "richTextBoxN";
             this.richTextBoxN.Size = new System.Drawing.Size(183, 23);
             this.richTextBoxN.TabIndex = 37;
@@ -309,6 +311,7 @@
             // richTextBoxE
             // 
             this.richTextBoxE.Location = new System.Drawing.Point(125, 192);
+            this.richTextBoxE.Multiline = false;
             this.richTextBoxE.Name = "richTextBoxE";
             this.richTextBoxE.Size = new System.Drawing.Size(183, 23);
             this.richTextBoxE.TabIndex = 36;
@@ -317,6 +320,7 @@
             // richTextBoxLat
             // 
             this.richTextBoxLat.Location = new System.Drawing.Point(125, 21);
+            this.richTextBoxLat.Multiline = false;
             this.richTextBoxLat.Name = "richTextBoxLat";
             this.richTextBoxLat.Size = new System.Drawing.Size(183, 23);
             this.richTextBoxLat.TabIndex = 23;
@@ -334,6 +338,7 @@
             // richTextBoxLon
             // 
             this.richTextBoxLon.Location = new System.Drawing.Point(125, 50);
+            this.richTextBoxLon.Multiline = false;
             this.richTextBoxLon.Name = "richTextBoxLon";
             this.richTextBoxLon.Size = new System.Drawing.Size(183, 23);
             this.richTextBoxLon.TabIndex = 24;
@@ -351,6 +356,7 @@
             // richTextBoxAlt
             // 
             this.richTextBoxAlt.Location = new System.Drawing.Point(125, 79);
+            this.richTextBoxAlt.Multiline = false;
             this.richTextBoxAlt.Name = "richTextBoxAlt";
             this.richTextBoxAlt.Size = new System.Drawing.Size(183, 23);
             this.richTextBoxAlt.TabIndex = 25;
@@ -396,6 +402,7 @@
             // richTextBoxZ
             // 
             this.richTextBoxZ.Location = new System.Drawing.Point(125, 164);
+            this.richTextBoxZ.Multiline = false;
             this.richTextBoxZ.Name = "richTextBoxZ";
             this.richTextBoxZ.Size = new System.Drawing.Size(183, 22);
             this.richTextBoxZ.TabIndex = 31;
@@ -413,6 +420,7 @@
             // richTextBoxY
             // 
             this.richTextBoxY.Location = new System.Drawing.Point(125, 136);
+            this.richTextBoxY.Multiline = false;
             this.richTextBoxY.Name = "richTextBoxY";
             this.richTextBoxY.Size = new System.Drawing.Size(183, 22);
             this.richTextBoxY.TabIndex = 30;
@@ -421,6 +429,7 @@
             // richTextBoxX
             // 
             this.richTextBoxX.Location = new System.Drawing.Point(125, 108);
+            this.richTextBoxX.Multiline = false;
             this.richTextBoxX.Name = "richTextBoxX";
             this.richTextBoxX.Size = new System.Drawing.Size(183, 22);
             this.richTextBoxX.TabIndex = 29;
