@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -179,6 +179,12 @@
     <Compile Include="earth\FormEarth.Designer.cs">
       <DependentUpon>FormEarth.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFPGA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFPGA.Designer.cs">
+      <DependentUpon>FormFPGA.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMsgCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="earth\FormEarth.resx">
       <DependentUpon>FormEarth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFPGA.resx">
+      <DependentUpon>FormFPGA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGetMsg.resx">
       <DependentUpon>FormGetMsg.cs</DependentUpon>

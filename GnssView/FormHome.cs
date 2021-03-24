@@ -46,6 +46,7 @@ namespace GnssView
         private project.FormHT1902 formHt1902;
         private project.FormHt103 formHt103;
         private FormEarth formEarth;
+        public FormFPGA formFPGA;
 
         Size homeSize;
         readonly int marginWidth = 4;/*像素点*/
@@ -318,6 +319,7 @@ namespace GnssView
                 }
 
                 if (coms.Count < 1) return;
+                coms.Sort();
 
                 string strTemp = "";
                 if (toolStripComboBoxCom.SelectedIndex >= 0)
@@ -720,13 +722,17 @@ namespace GnssView
                     /*解析字尾*/
                     cmdMsgBuf[cmdMsgPos] = uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos) % uartVar.MSG_MAX_LEN];
 
-                    if ((cmdHeadType == e_strHeadId.update) && (cmdMsgPos + 2 == 12))
+                    if (cmdHeadType == e_strHeadId.update)
                     {
                         cmdMsgBuf[cmdMsgPos + 1] = uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos + 1) % uartVar.MSG_MAX_LEN];
                         cmdMsgPos += 2;
-                        if (formUpdate != null && !formUpdate.IsDisposed)
+                        if (formUpdate != null && !formUpdate.IsDisposed && (cmdMsgPos == 12))
                         {
-                            if (0 != formUpdate.xlbinDec(cmdMsgBuf, cmdMsgPos)) cmdMsgPos = 6;/*丢掉字头*/
+                            if (0 != formUpdate.xlbinDec(cmdMsgBuf, cmdMsgPos)) cmdMsgPos = 6;/*丢掉字头继续查找防止找错头*/
+                        }
+                        else if (formFPGA != null && !formFPGA.IsDisposed)
+                        {
+                            if (0 != formFPGA.xlbinDec(cmdMsgBuf, cmdMsgPos)) cmdMsgPos = 6;/*丢掉字头继续查找防止找错头*/
                         }
                     }
                     else if ((cmdHeadType == e_strHeadId.Msg) && (cmdMsgBuf[cmdMsgPos] == 'H') && (uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos + 1) % uartVar.MSG_MAX_LEN] == 'T'))//公司内部命令“HT”字尾
@@ -1280,6 +1286,24 @@ namespace GnssView
                 formUpdate.WindowState = FormWindowState.Normal;
             }
             formUpdate.BringToFront();//将控件放置所有控件最前端 
+        }
+
+        private void toolStripMenuItemFPGA_Click(object sender, EventArgs e)
+        {
+            if (formFPGA == null || formFPGA.IsDisposed)
+            {
+                formFPGA = new FormFPGA(this)
+                {
+                    MdiParent = this
+                };
+                formFPGA.Location = new Point(homeSize.Width - formFPGA.Width / 2, homeSize.Height - formFPGA.Height / 2);
+                formFPGA.Show();
+            }
+            else if (formFPGA.WindowState == FormWindowState.Minimized)
+            {
+                formFPGA.WindowState = FormWindowState.Normal;
+            }
+            formFPGA.BringToFront();//将控件放置所有控件最前端 
         }
 
         private void toolStripMenuItemDebug_Click(object sender, EventArgs e)

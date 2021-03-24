@@ -286,25 +286,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_38135F6F844B43D3891F2FD856EEFDB2"
+        "OwnerKey" = "8:_D3AF2E23C29D9EADF678599129069576"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6ABDA34C4C673F2E35E9C8A4FD5025C8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9FDFC6264B879808E1496E820231D2E6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B76250A1BB61BA5B4E338EDDF830328D"
+        "OwnerKey" = "8:_C97150D7D145393674BC6069DCB50AEC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -316,13 +304,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6E10C9EF783D84F5AB360E62224D29BD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AF0842EDF9C1F3CB0AA0710D67DB262B"
+        "OwnerKey" = "8:_B76250A1BB61BA5B4E338EDDF830328D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -334,7 +316,31 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C97150D7D145393674BC6069DCB50AEC"
+        "OwnerKey" = "8:_AF0842EDF9C1F3CB0AA0710D67DB262B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9FDFC6264B879808E1496E820231D2E6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6E10C9EF783D84F5AB360E62224D29BD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6ABDA34C4C673F2E35E9C8A4FD5025C8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_679576E1352A160BF8D005E40D69435D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -352,25 +358,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_17793F470CFA2D76C7FA11E6F123B316"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D3AF2E23C29D9EADF678599129069576"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_679576E1352A160BF8D005E40D69435D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_39D9149DD4C2A27CDC89C88BB062BC4D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_38135F6F844B43D3891F2FD856EEFDB2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_17793F470CFA2D76C7FA11E6F123B316"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -513,9 +513,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GnssView, Version=2.5.0.2, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:GnssView, Version=2.5.0.3, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_38135F6F844B43D3891F2FD856EEFDB2"
+                    {
+                    "Name" = "8:GnssView.exe"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\GnssView\\bin\\Release\\GnssView\\GnssView.exe"
             "TargetName" = "8:"
@@ -1240,15 +1245,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GnssView"
-        "ProductCode" = "8:{74C825D6-CBFE-44FC-8994-7365CA940B15}"
-        "PackageCode" = "8:{6581F92C-577E-43B4-82BD-F29C356A62D8}"
+        "ProductCode" = "8:{518DB386-DE8C-4F54-A4C8-DD4A23FEB678}"
+        "PackageCode" = "8:{C51B525C-2BD0-459A-9CE9-285F3202C550}"
         "UpgradeCode" = "8:{1BC6EDA7-5EC0-42EA-8A54-C5DFA6735752}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.5.03"
+        "ProductVersion" = "8:2.5.04"
         "Manufacturer" = "8:XLHT"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1391,7 +1396,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D780BA92D4CC4B10A0C518568C96252D"
             {
-            "Name" = "8:GnssView 2.5.0.3"
+            "Name" = "8:GnssView 2.5.0.4"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"

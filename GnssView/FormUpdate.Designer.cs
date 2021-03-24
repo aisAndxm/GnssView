@@ -339,7 +339,7 @@
             this.groupBoxProcess.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxProcess.Location = new System.Drawing.Point(12, 280);
             this.groupBoxProcess.Name = "groupBoxProcess";
-            this.groupBoxProcess.Size = new System.Drawing.Size(252, 79);
+            this.groupBoxProcess.Size = new System.Drawing.Size(196, 79);
             this.groupBoxProcess.TabIndex = 19;
             this.groupBoxProcess.TabStop = false;
             this.groupBoxProcess.Text = "流程";
@@ -347,15 +347,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 21);
+            this.label1.Location = new System.Drawing.Point(6, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 6;
-            this.label1.Text = "传输间隔(ms)";
+            this.label1.Text = "传输间隔(ms):";
             // 
             // textBoxWaitTime
             // 
-            this.textBoxWaitTime.Location = new System.Drawing.Point(183, 18);
+            this.textBoxWaitTime.Location = new System.Drawing.Point(95, 45);
             this.textBoxWaitTime.MaxLength = 7;
             this.textBoxWaitTime.Name = "textBoxWaitTime";
             this.textBoxWaitTime.Size = new System.Drawing.Size(48, 21);
@@ -365,7 +365,7 @@
             // checkBoxCheckID
             // 
             this.checkBoxCheckID.AutoSize = true;
-            this.checkBoxCheckID.Location = new System.Drawing.Point(6, 44);
+            this.checkBoxCheckID.Location = new System.Drawing.Point(60, 20);
             this.checkBoxCheckID.Name = "checkBoxCheckID";
             this.checkBoxCheckID.Size = new System.Drawing.Size(72, 16);
             this.checkBoxCheckID.TabIndex = 4;
@@ -386,9 +386,9 @@
             // 
             this.groupBoxSwVersion.Controls.Add(this.comboBoxSwVer);
             this.groupBoxSwVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBoxSwVersion.Location = new System.Drawing.Point(270, 280);
+            this.groupBoxSwVersion.Location = new System.Drawing.Point(214, 280);
             this.groupBoxSwVersion.Name = "groupBoxSwVersion";
-            this.groupBoxSwVersion.Size = new System.Drawing.Size(190, 79);
+            this.groupBoxSwVersion.Size = new System.Drawing.Size(120, 79);
             this.groupBoxSwVersion.TabIndex = 23;
             this.groupBoxSwVersion.TabStop = false;
             this.groupBoxSwVersion.Text = "软件版本";
