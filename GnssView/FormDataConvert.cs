@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Globalization;
 
 namespace GnssView
 {
@@ -20,6 +22,11 @@ namespace GnssView
             textBoxMoveNum.Text = "0";
             comboBoxSel.SelectedIndex = 0;
         }
+
+        private int DataTypeflag = 0;
+        string[] strPathName = new string[3];
+        string[] strFolderName = new string[3];
+        byte[] dataTab = { 1, 3, 0xFF, 0xFD };
 
         /*list实体类深复制*/
         public List<char> CopyList(List<char> srcList)
@@ -346,6 +353,235 @@ namespace GnssView
                     break;
                 default:
                     break;
+            }
+        }
+
+        void rfDataConvert()
+        {
+            string strFolderNameTmp;
+
+            strFolderNameTmp = strFolderName[2] + "\\rfDataOut-" + System.DateTime.Now.ToString("yyyyMMddTHHmmss") + ".bin";
+            try
+            {
+                using (StreamReader fpDataIn = new StreamReader(new FileStream(strPathName[2], FileMode.Open, FileAccess.Read)))
+                {
+                    BinaryWriter fpDataOut = new BinaryWriter(new FileStream(strFolderNameTmp, FileMode.OpenOrCreate, FileAccess.Write));
+                    while (true)
+                    {
+                        string strTmp;
+                        while (true)
+                        {
+                            strTmp = fpDataIn.ReadLine();
+
+                            if (string.Compare(strTmp, 0, "0x", 0, 2) == 0) break;
+                        }
+
+                        if (UInt32.TryParse(strTmp, NumberStyles.HexNumber, new CultureInfo("en-US"), out UInt32 data))
+                        {
+                            for (UInt32 count = 0; count < 16; count++)
+                            {
+                                byte dataOut = (byte)((data >> (int)(30 - count * 2)) & 3);
+                                fpDataOut.Write(dataTab[dataOut]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+        void rfBin2Bin()
+        {
+            string strFolderNameTmp;
+
+            strFolderNameTmp = strFolderName[2] + "\\rfDataOut-" + System.DateTime.Now.ToString("yyyyMMddTHHmmss") + ".bin";
+            try
+            {
+                using (StreamReader fpDataIn = new StreamReader(new FileStream(strPathName[2], FileMode.Open, FileAccess.Read)))
+                {
+                    BinaryWriter fpDataOut = new BinaryWriter(new FileStream(strFolderNameTmp, FileMode.OpenOrCreate, FileAccess.Write));
+                    while (true)
+                    {
+                        int msg = fpDataIn.Read();
+
+                        if (msg == 0x0a)
+                        {
+                            msg = fpDataIn.Read();
+                            if (msg == 0x0d)
+                            {
+                                msg = fpDataIn.Read();
+                                if (msg == 0x0a)
+                                    break;
+                            }
+                        }
+                    }
+                    while (true)
+                    {
+                        char[] charMsg = new char[4];
+                        fpDataIn.Read(charMsg, 0, 4);
+
+                        UInt32 data = 0;
+                        for (UInt32 i = 0; i < 4; i++)
+                        {
+                            data <<= 8;
+                            data |= (byte)(charMsg[i] & 0xff);
+                        }
+
+                        for (UInt32 count = 0; count < 16; count++)
+                        {
+                            byte dataOut = (byte)((data >> (int)(30 - count * 2)) & 3);
+                            fpDataOut.Write(dataTab[dataOut]);
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+        void rfBinDataConvert()
+        {
+            byte dataOut;
+            byte[] dataTmp = new byte[64];
+            byte[] data = new byte[64];
+            UInt32 count, dataLen = 0, wr = 0, rd = 0;
+            bool startFlag = true;
+            string strFolderNameTmp;
+
+            strFolderNameTmp = strFolderName[2] + "\\rfInDataI-" + System.DateTime.Now.ToString("yyyyMMddTHHmmss") + ".bin";
+            try
+            {
+                using (BinaryReader fpDataIn = new BinaryReader(new FileStream(strPathName[2], FileMode.Open, FileAccess.Read)))
+                {
+                    BinaryWriter fpDataOut = new BinaryWriter(new FileStream(strFolderNameTmp, FileMode.OpenOrCreate, FileAccess.Write));
+                    Array.Clear(data, 0, 64);
+                    while (true)
+                    {
+                        if (fpDataIn.PeekChar() == -1) break;
+                        data[wr++] = fpDataIn.ReadByte();
+                        if (wr >= 64) wr = 0;
+
+                        if (wr > rd) dataLen = wr - rd;
+                        else dataLen = wr + 64 - rd;
+                        if (dataLen < 20) continue;
+
+                        if (startFlag)
+                        {
+                            if (data[rd] == 'r')
+                            {
+                                for (int i = 0; i < 16; i++)
+                                    dataTmp[i] = data[(rd + i) % 64];
+                                if (string.Compare(dataTmp.ToString(), "rf rd start...\r\n") == 0)
+                                {
+                                    rd += 16; if (rd >= 64) rd = 0;
+                                    startFlag = false;
+                                    continue;
+                                }
+                            }
+                            rd += 1; if (rd >= 64) rd = 0;
+                            continue;
+                        }
+
+                        if (data[rd] == 'r')
+                        {
+                            for (int i = 0; i < 20; i++)
+                                dataTmp[i] = data[(rd + i) % 64];
+                            if (string.Compare(dataTmp.ToString(), "rf dataI rd end...\r\n") == 0)
+                            {
+                                rd += 20; if (rd >= 64) rd = 0;
+                                fpDataOut.Close();
+                                strFolderNameTmp = strFolderName[2] + "\\rfInDataQ-" + System.DateTime.Now.ToString("yyyyMMddTHHmmss") + ".bin";
+                                fpDataOut = new BinaryWriter(new FileStream(strFolderNameTmp, FileMode.OpenOrCreate, FileAccess.Write));
+                                continue;
+                            }
+                            else if (string.Compare(dataTmp.ToString(), "rf dataQ rd end...\r\n") == 0)
+                            { 
+                                rd += 20; if (rd >= 64) rd = 0;
+                                //fpDataOut.Close();
+                                //strFolderNameTmp = strFolderName[2] + "\\rfInDataI-" + System.DateTime.Now.ToString("yyyyMMddTHHmmss") + ".bin";
+                                //fpDataOut = new BinaryWriter(new FileStream(strFolderNameTmp, FileMode.OpenOrCreate, FileAccess.Write));
+                                continue;
+                            }
+                        }
+
+                        for (count = 0; count < 4; count++)
+                        {
+                            dataOut = (byte)((data[rd] >> (byte)(6 - count * 2)) & 3);
+                            fpDataOut.Write(dataTab[dataOut]);
+                        }
+
+                        rd++; if (rd >= 64) rd = 0;
+                    }
+
+                }
+
+
+            }
+            catch { }
+
+        }
+
+        private void btnStartConvert_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 3; i ++)
+            {
+                if ((DataTypeflag & (1 << i)) == 0) continue;
+                switch (i)
+                {
+                    case 0:
+                        rfDataConvert();
+                        break;
+                    case 1:
+                        rfBin2Bin();
+                        break;
+                    case 2:
+                        rfBinDataConvert();
+                        break;
+                    default:
+                        break;
+
+                }
+                DataTypeflag &= ~(1 << i);
+            }
+        }
+
+        private void btnSelect1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Title = "加载文件",
+                Filter = "*.*|*.*|*.txt|*.txt|*.dat|*.dat|*.log|*.log",
+                FilterIndex = 1,
+                RestoreDirectory = true,
+                AutoUpgradeEnabled = false
+            };
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    int pos = ((Button)sender).TabIndex - btnSelect1.TabIndex;
+                    strPathName[pos] = dialog.FileName.ToString();
+                    switch (pos)
+                    {
+                        case 0:
+                            textBox1.Text = strPathName[pos];       //显示文件路径到编辑框
+                            break;
+                        case 1:
+                            textBox2.Text = strPathName[pos];       //显示文件路径到编辑框
+                            break;
+                        case 2:
+                            textBox3.Text = strPathName[pos];       //显示文件路径到编辑框
+                            break;
+                        default:
+                            break;
+                    }
+                    strFolderName[pos] = new DirectoryInfo(strPathName[pos]).Parent.FullName.ToString();
+
+                    DataTypeflag |= (1 << pos);
+
+                }
+                catch
+                { }
             }
         }
     }

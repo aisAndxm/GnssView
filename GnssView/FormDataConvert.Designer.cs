@@ -64,16 +64,29 @@
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBoxY = new System.Windows.Forms.RichTextBox();
             this.richTextBoxX = new System.Windows.Forms.RichTextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnSelect1 = new System.Windows.Forms.Button();
+            this.btnSelect2 = new System.Windows.Forms.Button();
+            this.btnSelect3 = new System.Windows.Forms.Button();
+            this.btnStartConvert = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -435,6 +448,113 @@
             this.richTextBoxX.TabIndex = 29;
             this.richTextBoxX.Text = "";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnStartConvert);
+            this.tabPage3.Controls.Add(this.btnSelect3);
+            this.tabPage3.Controls.Add(this.btnSelect2);
+            this.tabPage3.Controls.Add(this.btnSelect1);
+            this.tabPage3.Controls.Add(this.textBox3);
+            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(888, 416);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "数据处理";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(54, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(113, 12);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "采数(字符串)量化：";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(54, 100);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 12);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "二进制量化：";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(54, 150);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(113, 12);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "采数(二进制)量化：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(173, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(425, 21);
+            this.textBox1.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(173, 95);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(425, 21);
+            this.textBox2.TabIndex = 4;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(173, 145);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(425, 21);
+            this.textBox3.TabIndex = 5;
+            // 
+            // btnSelect1
+            // 
+            this.btnSelect1.Location = new System.Drawing.Point(604, 44);
+            this.btnSelect1.Name = "btnSelect1";
+            this.btnSelect1.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect1.TabIndex = 6;
+            this.btnSelect1.Text = "选择数据";
+            this.btnSelect1.UseVisualStyleBackColor = true;
+            this.btnSelect1.Click += new System.EventHandler(this.btnSelect1_Click);
+            // 
+            // btnSelect2
+            // 
+            this.btnSelect2.Location = new System.Drawing.Point(604, 94);
+            this.btnSelect2.Name = "btnSelect2";
+            this.btnSelect2.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect2.TabIndex = 7;
+            this.btnSelect2.Text = "选择数据";
+            this.btnSelect2.UseVisualStyleBackColor = true;
+            this.btnSelect2.Click += new System.EventHandler(this.btnSelect1_Click);
+            // 
+            // btnSelect3
+            // 
+            this.btnSelect3.Location = new System.Drawing.Point(604, 144);
+            this.btnSelect3.Name = "btnSelect3";
+            this.btnSelect3.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect3.TabIndex = 8;
+            this.btnSelect3.Text = "选择数据";
+            this.btnSelect3.UseVisualStyleBackColor = true;
+            this.btnSelect3.Click += new System.EventHandler(this.btnSelect1_Click);
+            // 
+            // btnStartConvert
+            // 
+            this.btnStartConvert.Location = new System.Drawing.Point(604, 313);
+            this.btnStartConvert.Name = "btnStartConvert";
+            this.btnStartConvert.Size = new System.Drawing.Size(75, 23);
+            this.btnStartConvert.TabIndex = 9;
+            this.btnStartConvert.Text = "开始转换";
+            this.btnStartConvert.UseVisualStyleBackColor = true;
+            this.btnStartConvert.Click += new System.EventHandler(this.btnStartConvert_Click);
+            // 
             // FormDataConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -452,6 +572,8 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -493,6 +615,16 @@
         private System.Windows.Forms.RichTextBox richTextBoxY;
         private System.Windows.Forms.RichTextBox richTextBoxX;
         private System.Windows.Forms.ComboBox comboBoxSel;
-
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnSelect3;
+        private System.Windows.Forms.Button btnSelect2;
+        private System.Windows.Forms.Button btnSelect1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnStartConvert;
     }
 }
