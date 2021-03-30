@@ -560,6 +560,7 @@ namespace GnssView
                         updateState = false;
                     break;
                 case 0xF1:
+                    if (rxState != 0xdd) break;
                     cmdPack(0xF0, 0x0000, 0x0000);
                     rxState = 0xF1;
                     connectFlag = true;

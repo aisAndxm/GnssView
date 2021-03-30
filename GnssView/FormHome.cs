@@ -81,6 +81,7 @@ namespace GnssView
         private static e_strHeadId cmdHeadType = 0;
         private static int cmdMsgPos = 0;
         readonly static byte[] cmdMsgBuf = new byte[600];
+        private static int xlbinDataLen = 10;
 
         /// <summary>
         /// 文件流变量
@@ -586,6 +587,7 @@ namespace GnssView
             int dataLen;
             byte[] headTmp = new byte[6];
 
+
             if (wr == uartRxBuf.rd) return;
 
             while (true)
@@ -722,18 +724,24 @@ namespace GnssView
                     /*解析字尾*/
                     cmdMsgBuf[cmdMsgPos] = uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos) % uartVar.MSG_MAX_LEN];
 
-                    if (cmdHeadType == e_strHeadId.update)
+                    if (cmdHeadType == e_strHeadId.update && formUpdate != null && !formUpdate.IsDisposed && (cmdMsgPos == xlbinDataLen))
                     {
                         cmdMsgBuf[cmdMsgPos + 1] = uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos + 1) % uartVar.MSG_MAX_LEN];
                         cmdMsgPos += 2;
-                        if (formUpdate != null && !formUpdate.IsDisposed && (cmdMsgPos == 12))
+                        if (0 != formUpdate.xlbinDec(cmdMsgBuf, cmdMsgPos)) cmdMsgPos = 6;/*丢掉字头继续查找防止找错头*/
+                    }
+                    else if(cmdHeadType == e_strHeadId.update && formFPGA != null && !formFPGA.IsDisposed && (cmdMsgPos == xlbinDataLen))
+                    {
+                        if ((cmdMsgBuf[6] == 0x81) && (cmdMsgPos == 10))/*读flash*/
                         {
-                            if (0 != formUpdate.xlbinDec(cmdMsgBuf, cmdMsgPos)) cmdMsgPos = 6;/*丢掉字头继续查找防止找错头*/
+                            cmdMsgPos++;
+                            xlbinDataLen += (cmdMsgBuf[9] << 4) + cmdMsgBuf[10];
+                            if (xlbinDataLen > 0) continue;
                         }
-                        else if (formFPGA != null && !formFPGA.IsDisposed)
-                        {
-                            if (0 != formFPGA.xlbinDec(cmdMsgBuf, cmdMsgPos)) cmdMsgPos = 6;/*丢掉字头继续查找防止找错头*/
-                        }
+                        cmdMsgBuf[cmdMsgPos + 1] = uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos + 1) % uartVar.MSG_MAX_LEN];
+                        cmdMsgPos += 2;
+                        if (0 != formFPGA.xlbinDec(cmdMsgBuf, cmdMsgPos)) { };/*丢掉字头继续查找防止找错头*/
+                        xlbinDataLen = 10;
                     }
                     else if ((cmdHeadType == e_strHeadId.Msg) && (cmdMsgBuf[cmdMsgPos] == 'H') && (uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos + 1) % uartVar.MSG_MAX_LEN] == 'T'))//公司内部命令“HT”字尾
                     {
