@@ -94,6 +94,7 @@ namespace GnssView
         private readonly int timerInterVal = 100;
         private readonly string strProtHead = "$XLBIN";/*字头*/
         private bool connectFlag = false;
+        private int waitFlashEraseCnt = 0;
 
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -257,6 +258,8 @@ namespace GnssView
 
             waitTimeInterval = (int)(((sendFileLen / rdFileLen) * 1100 + 8000) / timerInterVal);/* 估计烧写时间单位是ms*/
 
+            waitFlashEraseCnt = 0;
+
             messageLabel("开始升级\r\n");
 
             timerSend.Interval = timerInterVal;
@@ -286,6 +289,25 @@ namespace GnssView
             btnCheck.Enabled = state;
             groupBoxReg.Enabled = state;
             groupBoxType.Enabled = state;
+        }
+
+        private void initGlobalVar()
+        {
+            updateState = false;
+            rxDataFrameId = 0;
+            txDataFrameId = 0;
+            errorState = 0;
+            rxState = 0xF0;
+            timerTick = 0;
+            procFlag = ProcessState.ask;
+        }
+
+        private void clearGlobalVar()
+        {
+            procFlag = ProcessState.idel;
+            rxState = 0;
+            updateState = false;
+            if (brBootLoader != null) brBootLoader.Dispose();
         }
 
         private void timerSend_Tick(object sender, EventArgs e)
@@ -349,6 +371,17 @@ namespace GnssView
                                 messageLabel(String.Format("等待超时{0,2:X2}\r\n", errorState));
                             }
                             return;
+                        case 0xdd:
+                            waitFlashEraseCnt++;
+                            if (waitFlashEraseCnt > waitTimeUpdate * 60)
+                            {
+                                clearGlobalVar();
+                                timerSend.Enabled = false;
+                                btnEnable(true);
+                                progBarUpdate.Value = 0;
+                                messageLabel(String.Format("等待超时{0,2:X2}\r\n", errorState));
+                            }
+                            return;
                         case 2:/*重传*/
                             procFlag = ProcessState.reTran;
                             break;
@@ -362,25 +395,6 @@ namespace GnssView
                     timerTick = 0;
                     break;
             }
-        }
-
-        private void initGlobalVar()
-        {
-            updateState = false;
-            rxDataFrameId = 0;
-            txDataFrameId = 0;
-            errorState = 0;
-            rxState = 0xF0;
-            timerTick = 0;
-            procFlag = ProcessState.ask;
-        }
-
-        private void clearGlobalVar()
-        {
-            procFlag = ProcessState.idel;
-            rxState = 0;
-            updateState = false;
-            if (brBootLoader != null) brBootLoader.Dispose();
         }
 
         private void updatePro()
@@ -410,6 +424,7 @@ namespace GnssView
 
                 txDataFrameId = 0;/*重新发送清除帧号*/
                 procFlag = ProcessState.start;
+                rxState = 0xdd;
             }
             else if (procFlag == ProcessState.start)/*烧写BIN文件*/
             {
