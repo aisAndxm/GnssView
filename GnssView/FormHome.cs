@@ -80,7 +80,7 @@ namespace GnssView
         /// </summary>
         private static e_strHeadId cmdHeadType = 0;
         private static int cmdMsgPos = 0;
-        readonly static byte[] cmdMsgBuf = new byte[600];
+        readonly static byte[] cmdMsgBuf = new byte[2048];
         private static int xlbinDataLen = 10;
 
         /// <summary>
@@ -152,14 +152,6 @@ namespace GnssView
         private void sonFormInit()
         {
             this.IsMdiContainer = true;
-
-            //formAcc = new FormAcc(this);
-            //formAcc.TopLevel = false;
-            //formAcc.MdiParent = this;
-
-            //formCtrl = new FormCtrl(this);
-            //formCtrl.TopLevel = false;
-            //formCtrl.MdiParent = this;
 
             form2D = new Form2D(this)
             {
@@ -732,10 +724,10 @@ namespace GnssView
                     }
                     else if(cmdHeadType == e_strHeadId.update && formFPGA != null && !formFPGA.IsDisposed && (cmdMsgPos == xlbinDataLen))
                     {
-                        if ((cmdMsgBuf[6] == 0x81) && (cmdMsgPos == 10))/*读flash*/
+                        if ((cmdMsgBuf[6] == 0x01) && (cmdMsgPos == 10))/*读flash*/
                         {
                             cmdMsgPos++;
-                            xlbinDataLen += (cmdMsgBuf[9] << 4) + cmdMsgBuf[10];
+                            xlbinDataLen += (cmdMsgBuf[9] << 8) + cmdMsgBuf[10];
                             if (xlbinDataLen > 0) continue;
                         }
                         cmdMsgBuf[cmdMsgPos + 1] = uartRxBuf.buf[(uartRxBuf.rd + cmdMsgPos + 1) % uartVar.MSG_MAX_LEN];
@@ -1169,7 +1161,6 @@ namespace GnssView
                     TopLevel = false,
                     MdiParent = this,
                     Size = homeSize,
-                    Location = new Point(homeSize.Width, homeSize.Height)
                 };
                 formCtrl.Show();
             }

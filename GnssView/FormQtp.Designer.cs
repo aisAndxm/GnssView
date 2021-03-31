@@ -258,7 +258,7 @@
             this.splitContainerControl2.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl2.Panel2.Controls.Add(this.panel1);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1249, 667);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1249, 662);
             this.splitContainerControl2.SplitterPosition = 434;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -281,7 +281,7 @@
             this.splitContainerControl3.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControlItem);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(434, 667);
+            this.splitContainerControl3.Size = new System.Drawing.Size(434, 662);
             this.splitContainerControl3.SplitterPosition = 76;
             this.splitContainerControl3.TabIndex = 0;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -352,7 +352,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 560);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 550);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(430, 22);
             this.statusStrip1.TabIndex = 1;
@@ -364,7 +364,7 @@
             this.xtraTabControlItem.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlItem.Name = "xtraTabControlItem";
             this.xtraTabControlItem.SelectedTabPage = this.xtraTabPageRnss;
-            this.xtraTabControlItem.Size = new System.Drawing.Size(430, 582);
+            this.xtraTabControlItem.Size = new System.Drawing.Size(430, 572);
             this.xtraTabControlItem.TabIndex = 0;
             this.xtraTabControlItem.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageRnss,
@@ -414,7 +414,7 @@
             this.xtraTabPageRnss.Controls.Add(this.richTextBoxReAcqTime);
             this.xtraTabPageRnss.Controls.Add(this.richTextBoxReAcqCnt);
             this.xtraTabPageRnss.Name = "xtraTabPageRnss";
-            this.xtraTabPageRnss.Size = new System.Drawing.Size(424, 553);
+            this.xtraTabPageRnss.Size = new System.Drawing.Size(428, 546);
             this.xtraTabPageRnss.Text = "RNSS测试";
             // 
             // comboBoxErrorRateBranch
@@ -868,7 +868,7 @@
             // xtraTabPageRdss
             // 
             this.xtraTabPageRdss.Name = "xtraTabPageRdss";
-            this.xtraTabPageRdss.Size = new System.Drawing.Size(424, 553);
+            this.xtraTabPageRdss.Size = new System.Drawing.Size(428, 546);
             this.xtraTabPageRdss.Text = "RDSS测试";
             // 
             // panel1
@@ -878,7 +878,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(806, 663);
+            this.panel1.Size = new System.Drawing.Size(801, 658);
             this.panel1.TabIndex = 1;
             // 
             // splitContainerControl4
@@ -894,8 +894,8 @@
             this.splitContainerControl4.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl4.Panel2.Controls.Add(this.splitContainerControl5);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(804, 661);
-            this.splitContainerControl4.SplitterPosition = 214;
+            this.splitContainerControl4.Size = new System.Drawing.Size(799, 656);
+            this.splitContainerControl4.SplitterPosition = 227;
             this.splitContainerControl4.TabIndex = 0;
             this.splitContainerControl4.Text = "splitContainerControl4";
             // 
@@ -909,7 +909,7 @@
             this.richTextBoxPro.Name = "richTextBoxPro";
             this.richTextBoxPro.ReadOnly = true;
             this.richTextBoxPro.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBoxPro.Size = new System.Drawing.Size(800, 438);
+            this.richTextBoxPro.Size = new System.Drawing.Size(795, 415);
             this.richTextBoxPro.TabIndex = 4;
             this.richTextBoxPro.Text = "";
             this.richTextBoxPro.TextChanged += new System.EventHandler(this.richTextBoxPro_TextChanged);
@@ -950,8 +950,8 @@
             this.splitContainerControl5.Panel2.Controls.Add(this.comboBoxCmd);
             this.splitContainerControl5.Panel2.Controls.Add(this.label27);
             this.splitContainerControl5.Panel2.Text = "Panel2";
-            this.splitContainerControl5.Size = new System.Drawing.Size(800, 210);
-            this.splitContainerControl5.SplitterPosition = 73;
+            this.splitContainerControl5.Size = new System.Drawing.Size(795, 223);
+            this.splitContainerControl5.SplitterPosition = 65;
             this.splitContainerControl5.TabIndex = 0;
             this.splitContainerControl5.Text = "splitContainerControl5";
             // 
@@ -965,7 +965,7 @@
             this.richTextBoxSendCmdShow.Name = "richTextBoxSendCmdShow";
             this.richTextBoxSendCmdShow.ReadOnly = true;
             this.richTextBoxSendCmdShow.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBoxSendCmdShow.Size = new System.Drawing.Size(796, 69);
+            this.richTextBoxSendCmdShow.Size = new System.Drawing.Size(791, 61);
             this.richTextBoxSendCmdShow.TabIndex = 4;
             this.richTextBoxSendCmdShow.Text = "";
             this.richTextBoxSendCmdShow.TextChanged += new System.EventHandler(this.richTextBoxSendCmdShow_TextChanged);

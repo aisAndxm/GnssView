@@ -198,7 +198,7 @@
             // 
             this.xtraTabPageRdss2.Controls.Add(this.splitContainerControl1);
             this.xtraTabPageRdss2.Name = "xtraTabPageRdss2";
-            this.xtraTabPageRdss2.Size = new System.Drawing.Size(1047, 457);
+            this.xtraTabPageRdss2.Size = new System.Drawing.Size(1051, 460);
             this.xtraTabPageRdss2.Text = "北斗2代";
             // 
             // splitContainerControl1
@@ -219,7 +219,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1047, 457);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1051, 460);
             this.splitContainerControl1.SplitterPosition = 123;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -554,7 +554,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.groupControlRdssBeamSet);
             this.splitContainerControl2.Panel2.Controls.Add(this.groupControlLocal);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1043, 325);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1047, 323);
             this.splitContainerControl2.SplitterPosition = 138;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -586,7 +586,7 @@
             this.treeListRdss.OptionsView.ShowIndicator = false;
             this.treeListRdss.OptionsView.ShowVertLines = false;
             this.treeListRdss.SelectImageList = this.imageListRdss;
-            this.treeListRdss.Size = new System.Drawing.Size(138, 321);
+            this.treeListRdss.Size = new System.Drawing.Size(138, 319);
             this.treeListRdss.TabIndex = 2;
             this.treeListRdss.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeListRdss_FocusedNodeChanged);
             // 
@@ -1105,7 +1105,7 @@
             // 
             this.xtraTabPageRdss3.Controls.Add(this.splitContainerControl3);
             this.xtraTabPageRdss3.Name = "xtraTabPageRdss3";
-            this.xtraTabPageRdss3.Size = new System.Drawing.Size(1047, 457);
+            this.xtraTabPageRdss3.Size = new System.Drawing.Size(1051, 460);
             this.xtraTabPageRdss3.Text = "北斗3代";
             // 
             // splitContainerControl3
@@ -1118,7 +1118,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.groupControlUsrSearRdss3);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(1047, 457);
+            this.splitContainerControl3.Size = new System.Drawing.Size(1051, 460);
             this.splitContainerControl3.SplitterPosition = 134;
             this.splitContainerControl3.TabIndex = 0;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -1150,7 +1150,7 @@
             this.treeListRdss3.OptionsView.ShowIndicator = false;
             this.treeListRdss3.OptionsView.ShowVertLines = false;
             this.treeListRdss3.SelectImageList = this.imageListRdss;
-            this.treeListRdss3.Size = new System.Drawing.Size(134, 457);
+            this.treeListRdss3.Size = new System.Drawing.Size(134, 460);
             this.treeListRdss3.TabIndex = 4;
             this.treeListRdss3.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeListRdss3_FocusedNodeChanged);
             // 
@@ -1187,7 +1187,7 @@
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.OptionsView.ShowVertLines = false;
             this.treeList1.SelectImageList = this.imageListRdss;
-            this.treeList1.Size = new System.Drawing.Size(134, 457);
+            this.treeList1.Size = new System.Drawing.Size(134, 460);
             this.treeList1.TabIndex = 3;
             // 
             // groupControlUsrSearRdss3

@@ -207,12 +207,6 @@ namespace GnssView
         {
             long sendFileLen = 0;/*发送文件的大小Byte单位*/
 
-            if (!connectFlag)
-            {
-                messageLabel("设备未连接\r\n");
-                return;
-            }
-
             if (dataGridViewPath.Rows.Count < 1)
             {
                 messageLabel("添加bin文件\r\n");
@@ -297,7 +291,7 @@ namespace GnssView
             rxDataFrameId = 0;
             txDataFrameId = 0;
             errorState = 0;
-            rxState = 0xF0;
+            rxState = 1;/*空*/
             timerTick = 0;
             procFlag = ProcessState.ask;
         }
@@ -360,7 +354,7 @@ namespace GnssView
                             progBarUpdate.Value = 0;
                             messageLabel(String.Format("用户设备请求结束\r\n"));
                             return;
-                        case 0xF0:
+                        case 0xF0:/*等待连接*/
                             timerTick++;
                             if (timerTick > waitTimeUpdate * 10)
                             {
@@ -368,10 +362,10 @@ namespace GnssView
                                 timerSend.Enabled = false;
                                 btnEnable(true);
                                 progBarUpdate.Value = 0;
-                                messageLabel(String.Format("等待超时{0,2:X2}\r\n", errorState));
+                                messageLabel(String.Format("等待连接超时{0,2:X2}\r\n", errorState));
                             }
                             return;
-                        case 0xdd:
+                        case 0xDD:/*等待擦除*/
                             waitFlashEraseCnt++;
                             if (waitFlashEraseCnt > waitTimeUpdate * 60)
                             {
@@ -379,7 +373,7 @@ namespace GnssView
                                 timerSend.Enabled = false;
                                 btnEnable(true);
                                 progBarUpdate.Value = 0;
-                                messageLabel(String.Format("等待超时{0,2:X2}\r\n", errorState));
+                                messageLabel(String.Format("等待擦除超时{0,2:X2}\r\n", errorState));
                             }
                             return;
                         case 2:/*重传*/
@@ -416,6 +410,14 @@ namespace GnssView
             }
             else if (procFlag == ProcessState.ask)/*para0 = 0x00*/
             {
+                if (!connectFlag)
+                {
+                    rxState = 0xF0;/*等待连接设备*/
+                    messageLabel("等待连接设备\r\n");
+                    return;
+                }
+                else rxState = 0xDD;/*设备已经连接开始更新*/
+                messageLabel("等待擦除设备\r\n");
                 para0 = 0x00;
                 if (radioTransNormal.Checked) para1 = 1;/*是否握手传输*/
                 if (radioBtnBoot.Checked) para1 |= (0 << 2);
@@ -424,7 +426,7 @@ namespace GnssView
 
                 txDataFrameId = 0;/*重新发送清除帧号*/
                 procFlag = ProcessState.start;
-                rxState = 0xdd;
+
             }
             else if (procFlag == ProcessState.start)/*烧写BIN文件*/
             {
@@ -518,6 +520,7 @@ namespace GnssView
             messageLabel(String.Format("接收命令 {0,2:X2} {1,2:X2} {2,2:X2} {3,2:X2} {4,2:X2} {5,2:X2} {6,2:X2} {7,2:X2} {8,2:X2} {9,2:X2} {10,2:X2} {11,2:X2} \r\n",
                 data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[len - 1]));
             byte[] bTemp = new byte[2];
+            //UInt16 crcValue = crc16Check(data, 11, 1024);/*crc16*/
             int check = xorCheck(data, 0, len - 1);
             if ((check & 0xff) != data[11])
             {
@@ -560,9 +563,8 @@ namespace GnssView
                         updateState = false;
                     break;
                 case 0xF1:
-                    if (rxState != 0xdd) break;
                     cmdPack(0xF0, 0x0000, 0x0000);
-                    rxState = 0xF1;
+                    rxState = 1;/*如果更新等待连接，变成连接成功*/
                     connectFlag = true;
                     messageLabel("连接成功\r\n");
                     try
@@ -586,6 +588,15 @@ namespace GnssView
             int counter;
             UInt16 crc = 0;
             for (counter = 0; counter < len; counter++)
+                crc = (UInt16)((crc << 8) ^ crc16Table[((crc >> 8) ^ buffer[counter]) & 0x00FF]);
+            return crc;
+        }
+
+        private UInt16 crc16Check(byte[] buffer, int start, int len)
+        {
+            int counter;
+            UInt16 crc = 0;
+            for (counter = start; counter < len; counter++)
                 crc = (UInt16)((crc << 8) ^ crc16Table[((crc >> 8) ^ buffer[counter]) & 0x00FF]);
             return crc;
         }
@@ -623,7 +634,6 @@ namespace GnssView
 
             if (homeTmp.serialState())
                 homeTmp.serialSend(byteCmdBufPack, 0, cmdLenPack);
-
         }
 
         private void messageLabel(string message)

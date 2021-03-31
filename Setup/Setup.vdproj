@@ -513,7 +513,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GnssView, Version=2.5.0.6, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:GnssView, Version=2.5.0.7, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                 }
@@ -1240,15 +1240,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GnssView"
-        "ProductCode" = "8:{EB1F6BD4-92A1-4EA0-87E0-DB4F2FFBDE64}"
-        "PackageCode" = "8:{4CDA01BC-6385-45BE-8F86-62E732280D3E}"
+        "ProductCode" = "8:{C012A68D-CD26-4752-8B74-762D48706B30}"
+        "PackageCode" = "8:{D87EC529-CA99-4AA8-9B74-FEB8E1B0FE23}"
         "UpgradeCode" = "8:{1BC6EDA7-5EC0-42EA-8A54-C5DFA6735752}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.5.07"
+        "ProductVersion" = "8:2.5.08"
         "Manufacturer" = "8:XLHT"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1391,7 +1391,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D780BA92D4CC4B10A0C518568C96252D"
             {
-            "Name" = "8:GnssView 2.5.0.7"
+            "Name" = "8:GnssView 2.5.0.8"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
