@@ -259,7 +259,6 @@ namespace GnssView
             timerSend.Interval = timerInterVal;
             timerSend.Enabled = true;
             timerSend.Start();
-            btnUpdate.Enabled = false; 
             btnEnable(false);
         }
 
@@ -283,6 +282,7 @@ namespace GnssView
             btnCheck.Enabled = state;
             groupBoxReg.Enabled = state;
             groupBoxType.Enabled = state;
+            btnUpdate.Enabled = state;
         }
 
         private void initGlobalVar()
@@ -567,11 +567,6 @@ namespace GnssView
                     rxState = 1;/*如果更新等待连接，变成连接成功*/
                     connectFlag = true;
                     messageLabel("连接成功\r\n");
-                    try
-                    {
-                        this.Invoke((MethodInvoker)delegate { btnUpdate.Enabled = true; });
-                    }
-                    catch { }
                     break;
                 case 0x81:
                     messageLabel(BitConverter.ToString(data, 11, len - 12).Replace("-", " ") + ' ');

@@ -163,7 +163,9 @@ namespace GnssView
 
                     break;
                 case 3:
-
+                    groupControlDefine.Dock = DockStyle.Fill;
+                    groupControlDefine.Visible = true;
+                    this.splitContainerControl2.Panel2.Controls.Add(groupControlDefine);
                     break;
                 case 4:
 
