@@ -88,7 +88,7 @@ namespace GnssView
         private int timerTick = 0;/*烧写两个程序之间的间隔*/
         private byte[] byteCmdBuf = new byte[1124];
         private int cmdLen = 0;/*命令长度*/
-        private readonly int rdFileLen = 1022;/*一次读取bin长度*/
+        private readonly int rdFileLen = 1024;/*一次读取bin长度*/
         private int waitTimeUpdate = 10;/*两条命令间隔，超时时间*/
         private int waitTimeInterval = 600;/*等待烧写成功回复超时时间；两个程序烧写之间的间隔，超时时间*/
         private readonly int timerInterVal = 100;
@@ -356,7 +356,7 @@ namespace GnssView
                             return;
                         case 0xF0:/*等待连接*/
                             timerTick++;
-                            if (timerTick > waitTimeUpdate * 10)
+                            if (timerTick > waitTimeUpdate * 60)
                             {
                                 clearGlobalVar();
                                 timerSend.Enabled = false;
@@ -367,6 +367,7 @@ namespace GnssView
                             return;
                         case 0xDD:/*等待擦除*/
                             waitFlashEraseCnt++;
+                            messageLabel(String.Format("."));
                             if (waitFlashEraseCnt > waitTimeUpdate * 60)
                             {
                                 clearGlobalVar();

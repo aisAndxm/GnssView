@@ -64,21 +64,21 @@ namespace GnssView
             this.radioTransFast = new System.Windows.Forms.RadioButton();
             this.radioTransNormal = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnReadFlash = new System.Windows.Forms.Button();
+            this.btnDefault = new System.Windows.Forms.Button();
+            this.textBoxOut = new System.Windows.Forms.TextBox();
             this.btnCheck = new System.Windows.Forms.Button();
             this.groupBoxType = new System.Windows.Forms.GroupBox();
             this.radioBtnApp = new System.Windows.Forms.RadioButton();
             this.radioBtnBoot = new System.Windows.Forms.RadioButton();
-            this.textBoxOut = new System.Windows.Forms.TextBox();
             this.groupBoxReg = new System.Windows.Forms.GroupBox();
+            this.comboBoxRegVal = new System.Windows.Forms.ComboBox();
+            this.comboBoxRegAddr = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxWRRD = new System.Windows.Forms.ComboBox();
             this.btnSendCmd = new System.Windows.Forms.Button();
-            this.comboBoxRegAddr = new System.Windows.Forms.ComboBox();
-            this.comboBoxRegVal = new System.Windows.Forms.ComboBox();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.btnDefault = new System.Windows.Forms.Button();
-            this.btnReadFlash = new System.Windows.Forms.Button();
             this.groupBoxProperty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPath)).BeginInit();
             this.groupBoxProcess.SuspendLayout();
@@ -400,6 +400,43 @@ namespace GnssView
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "消息";
             // 
+            // btnReadFlash
+            // 
+            this.btnReadFlash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReadFlash.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReadFlash.Location = new System.Drawing.Point(139, 125);
+            this.btnReadFlash.Name = "btnReadFlash";
+            this.btnReadFlash.Size = new System.Drawing.Size(75, 23);
+            this.btnReadFlash.TabIndex = 41;
+            this.btnReadFlash.Text = "读Flash";
+            this.btnReadFlash.UseVisualStyleBackColor = true;
+            this.btnReadFlash.Click += new System.EventHandler(this.btnReadFlash_Click);
+            // 
+            // btnDefault
+            // 
+            this.btnDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDefault.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDefault.Location = new System.Drawing.Point(220, 125);
+            this.btnDefault.Name = "btnDefault";
+            this.btnDefault.Size = new System.Drawing.Size(96, 23);
+            this.btnDefault.TabIndex = 40;
+            this.btnDefault.Text = "加载默认程序";
+            this.btnDefault.UseVisualStyleBackColor = true;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
+            // 
+            // textBoxOut
+            // 
+            this.textBoxOut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxOut.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxOut.Location = new System.Drawing.Point(6, 19);
+            this.textBoxOut.Multiline = true;
+            this.textBoxOut.Name = "textBoxOut";
+            this.textBoxOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxOut.Size = new System.Drawing.Size(451, 99);
+            this.textBoxOut.TabIndex = 25;
+            this.textBoxOut.TextChanged += new System.EventHandler(this.textBoxOut_TextChanged);
+            // 
             // btnCheck
             // 
             this.btnCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -446,19 +483,6 @@ namespace GnssView
             this.radioBtnBoot.Text = "BootLoader";
             this.radioBtnBoot.UseVisualStyleBackColor = true;
             // 
-            // textBoxOut
-            // 
-            this.textBoxOut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxOut.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOut.Location = new System.Drawing.Point(6, 19);
-            this.textBoxOut.Multiline = true;
-            this.textBoxOut.Name = "textBoxOut";
-            this.textBoxOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOut.Size = new System.Drawing.Size(451, 99);
-            this.textBoxOut.TabIndex = 25;
-            this.textBoxOut.TextChanged += new System.EventHandler(this.textBoxOut_TextChanged);
-            // 
             // groupBoxReg
             // 
             this.groupBoxReg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -475,6 +499,32 @@ namespace GnssView
             this.groupBoxReg.TabIndex = 38;
             this.groupBoxReg.TabStop = false;
             this.groupBoxReg.Text = "读写设备寄存器";
+            // 
+            // comboBoxRegVal
+            // 
+            this.comboBoxRegVal.DropDownWidth = 100;
+            this.comboBoxRegVal.FormattingEnabled = true;
+            this.comboBoxRegVal.Items.AddRange(new object[] {
+            "0x0001（复位）"});
+            this.comboBoxRegVal.Location = new System.Drawing.Point(292, 19);
+            this.comboBoxRegVal.Name = "comboBoxRegVal";
+            this.comboBoxRegVal.Size = new System.Drawing.Size(64, 20);
+            this.comboBoxRegVal.TabIndex = 50;
+            // 
+            // comboBoxRegAddr
+            // 
+            this.comboBoxRegAddr.DropDownWidth = 180;
+            this.comboBoxRegAddr.FormattingEnabled = true;
+            this.comboBoxRegAddr.Items.AddRange(new object[] {
+            "0x0000（用户软复位）",
+            "0x0010（擦除空间的起始地址）",
+            "0x0011（擦除空间的起始地址）",
+            "0x0014（擦除空间的长度）",
+            "0x0015（擦除空间的长度）"});
+            this.comboBoxRegAddr.Location = new System.Drawing.Point(139, 19);
+            this.comboBoxRegAddr.Name = "comboBoxRegAddr";
+            this.comboBoxRegAddr.Size = new System.Drawing.Size(64, 20);
+            this.comboBoxRegAddr.TabIndex = 49;
             // 
             // label3
             // 
@@ -518,32 +568,6 @@ namespace GnssView
             this.btnSendCmd.UseVisualStyleBackColor = true;
             this.btnSendCmd.Click += new System.EventHandler(this.btnSendCmd_Click);
             // 
-            // comboBoxRegAddr
-            // 
-            this.comboBoxRegAddr.DropDownWidth = 180;
-            this.comboBoxRegAddr.FormattingEnabled = true;
-            this.comboBoxRegAddr.Items.AddRange(new object[] {
-            "0x0000（用户软复位）",
-            "0x0010（擦除空间的起始地址）",
-            "0x0011（擦除空间的起始地址）",
-            "0x0014（擦除空间的长度）",
-            "0x0015（擦除空间的长度）"});
-            this.comboBoxRegAddr.Location = new System.Drawing.Point(139, 19);
-            this.comboBoxRegAddr.Name = "comboBoxRegAddr";
-            this.comboBoxRegAddr.Size = new System.Drawing.Size(64, 20);
-            this.comboBoxRegAddr.TabIndex = 49;
-            // 
-            // comboBoxRegVal
-            // 
-            this.comboBoxRegVal.DropDownWidth = 100;
-            this.comboBoxRegVal.FormattingEnabled = true;
-            this.comboBoxRegVal.Items.AddRange(new object[] {
-            "0x0001（复位）"});
-            this.comboBoxRegVal.Location = new System.Drawing.Point(292, 19);
-            this.comboBoxRegVal.Name = "comboBoxRegVal";
-            this.comboBoxRegVal.Size = new System.Drawing.Size(64, 20);
-            this.comboBoxRegVal.TabIndex = 50;
-            // 
             // btnConnect
             // 
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -555,30 +579,6 @@ namespace GnssView
             this.btnConnect.Text = "连接设备";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // btnDefault
-            // 
-            this.btnDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefault.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDefault.Location = new System.Drawing.Point(220, 125);
-            this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(96, 23);
-            this.btnDefault.TabIndex = 40;
-            this.btnDefault.Text = "加载默认程序";
-            this.btnDefault.UseVisualStyleBackColor = true;
-            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
-            // 
-            // btnReadFlash
-            // 
-            this.btnReadFlash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReadFlash.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReadFlash.Location = new System.Drawing.Point(139, 125);
-            this.btnReadFlash.Name = "btnReadFlash";
-            this.btnReadFlash.Size = new System.Drawing.Size(75, 23);
-            this.btnReadFlash.TabIndex = 41;
-            this.btnReadFlash.Text = "读Flash";
-            this.btnReadFlash.UseVisualStyleBackColor = true;
-            this.btnReadFlash.Click += new System.EventHandler(this.btnReadFlash_Click);
             // 
             // FormFPGA
             // 
