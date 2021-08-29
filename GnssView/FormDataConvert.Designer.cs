@@ -65,21 +65,34 @@
             this.richTextBoxY = new System.Windows.Forms.RichTextBox();
             this.richTextBoxX = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.btnSelect1 = new System.Windows.Forms.Button();
-            this.btnSelect2 = new System.Windows.Forms.Button();
-            this.btnSelect3 = new System.Windows.Forms.Button();
             this.btnStartConvert = new System.Windows.Forms.Button();
+            this.btnSelect3 = new System.Windows.Forms.Button();
+            this.btnSelect2 = new System.Windows.Forms.Button();
+            this.btnSelect1 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
+            this.richTextBoxCRCInput = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.richTextBoxCRCResult = new System.Windows.Forms.RichTextBox();
+            this.btnCRC = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBoxModel = new System.Windows.Forms.ComboBox();
+            this.comboBoxWidth = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBoxPloy = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -87,6 +100,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -467,73 +481,15 @@
             this.tabPage3.Text = "数据处理";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // btnStartConvert
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(54, 50);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(113, 12);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "采数(字符串)量化：";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(54, 100);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(77, 12);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "二进制量化：";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(54, 150);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 12);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "采数(二进制)量化：";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(173, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(425, 21);
-            this.textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(173, 95);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(425, 21);
-            this.textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(173, 145);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(425, 21);
-            this.textBox3.TabIndex = 5;
-            // 
-            // btnSelect1
-            // 
-            this.btnSelect1.Location = new System.Drawing.Point(604, 44);
-            this.btnSelect1.Name = "btnSelect1";
-            this.btnSelect1.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect1.TabIndex = 6;
-            this.btnSelect1.Text = "选择数据";
-            this.btnSelect1.UseVisualStyleBackColor = true;
-            this.btnSelect1.Click += new System.EventHandler(this.btnSelect1_Click);
-            // 
-            // btnSelect2
-            // 
-            this.btnSelect2.Location = new System.Drawing.Point(604, 94);
-            this.btnSelect2.Name = "btnSelect2";
-            this.btnSelect2.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect2.TabIndex = 7;
-            this.btnSelect2.Text = "选择数据";
-            this.btnSelect2.UseVisualStyleBackColor = true;
-            this.btnSelect2.Click += new System.EventHandler(this.btnSelect1_Click);
+            this.btnStartConvert.Location = new System.Drawing.Point(604, 313);
+            this.btnStartConvert.Name = "btnStartConvert";
+            this.btnStartConvert.Size = new System.Drawing.Size(75, 23);
+            this.btnStartConvert.TabIndex = 9;
+            this.btnStartConvert.Text = "开始转换";
+            this.btnStartConvert.UseVisualStyleBackColor = true;
+            this.btnStartConvert.Click += new System.EventHandler(this.btnStartConvert_Click);
             // 
             // btnSelect3
             // 
@@ -545,15 +501,188 @@
             this.btnSelect3.UseVisualStyleBackColor = true;
             this.btnSelect3.Click += new System.EventHandler(this.btnSelect1_Click);
             // 
-            // btnStartConvert
+            // btnSelect2
             // 
-            this.btnStartConvert.Location = new System.Drawing.Point(604, 313);
-            this.btnStartConvert.Name = "btnStartConvert";
-            this.btnStartConvert.Size = new System.Drawing.Size(75, 23);
-            this.btnStartConvert.TabIndex = 9;
-            this.btnStartConvert.Text = "开始转换";
-            this.btnStartConvert.UseVisualStyleBackColor = true;
-            this.btnStartConvert.Click += new System.EventHandler(this.btnStartConvert_Click);
+            this.btnSelect2.Location = new System.Drawing.Point(604, 94);
+            this.btnSelect2.Name = "btnSelect2";
+            this.btnSelect2.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect2.TabIndex = 7;
+            this.btnSelect2.Text = "选择数据";
+            this.btnSelect2.UseVisualStyleBackColor = true;
+            this.btnSelect2.Click += new System.EventHandler(this.btnSelect1_Click);
+            // 
+            // btnSelect1
+            // 
+            this.btnSelect1.Location = new System.Drawing.Point(604, 44);
+            this.btnSelect1.Name = "btnSelect1";
+            this.btnSelect1.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect1.TabIndex = 6;
+            this.btnSelect1.Text = "选择数据";
+            this.btnSelect1.UseVisualStyleBackColor = true;
+            this.btnSelect1.Click += new System.EventHandler(this.btnSelect1_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(173, 145);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(425, 21);
+            this.textBox3.TabIndex = 5;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(173, 95);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(425, 21);
+            this.textBox2.TabIndex = 4;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(173, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(425, 21);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(54, 150);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(113, 12);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "采数(二进制)量化：";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(54, 100);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 12);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "二进制量化：";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(54, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(113, 12);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "采数(字符串)量化：";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.textBoxPloy);
+            this.tabPage4.Controls.Add(this.label20);
+            this.tabPage4.Controls.Add(this.comboBoxWidth);
+            this.tabPage4.Controls.Add(this.label19);
+            this.tabPage4.Controls.Add(this.comboBoxModel);
+            this.tabPage4.Controls.Add(this.label18);
+            this.tabPage4.Controls.Add(this.btnCRC);
+            this.tabPage4.Controls.Add(this.richTextBoxCRCResult);
+            this.tabPage4.Controls.Add(this.label17);
+            this.tabPage4.Controls.Add(this.richTextBoxCRCInput);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(888, 416);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "CRC";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(29, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(269, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "CRC校验输入-不区分大小写-间隔一个字符5A 5A：";
+            // 
+            // richTextBoxCRCInput
+            // 
+            this.richTextBoxCRCInput.Location = new System.Drawing.Point(31, 49);
+            this.richTextBoxCRCInput.Name = "richTextBoxCRCInput";
+            this.richTextBoxCRCInput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.richTextBoxCRCInput.Size = new System.Drawing.Size(814, 303);
+            this.richTextBoxCRCInput.TabIndex = 1;
+            this.richTextBoxCRCInput.Text = "";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(553, 377);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(101, 12);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "CRC校验输出HEX：";
+            // 
+            // richTextBoxCRCResult
+            // 
+            this.richTextBoxCRCResult.Location = new System.Drawing.Point(660, 372);
+            this.richTextBoxCRCResult.Name = "richTextBoxCRCResult";
+            this.richTextBoxCRCResult.Size = new System.Drawing.Size(104, 23);
+            this.richTextBoxCRCResult.TabIndex = 3;
+            this.richTextBoxCRCResult.Text = "";
+            // 
+            // btnCRC
+            // 
+            this.btnCRC.Location = new System.Drawing.Point(770, 372);
+            this.btnCRC.Name = "btnCRC";
+            this.btnCRC.Size = new System.Drawing.Size(75, 23);
+            this.btnCRC.TabIndex = 4;
+            this.btnCRC.Text = "开始";
+            this.btnCRC.UseVisualStyleBackColor = true;
+            this.btnCRC.Click += new System.EventHandler(this.btnCRC_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(29, 377);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 12);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "参数模型：";
+            // 
+            // comboBoxModel
+            // 
+            this.comboBoxModel.FormattingEnabled = true;
+            this.comboBoxModel.Location = new System.Drawing.Point(100, 372);
+            this.comboBoxModel.Name = "comboBoxModel";
+            this.comboBoxModel.Size = new System.Drawing.Size(137, 20);
+            this.comboBoxModel.TabIndex = 6;
+            // 
+            // comboBoxWidth
+            // 
+            this.comboBoxWidth.FormattingEnabled = true;
+            this.comboBoxWidth.Location = new System.Drawing.Point(290, 372);
+            this.comboBoxWidth.Name = "comboBoxWidth";
+            this.comboBoxWidth.Size = new System.Drawing.Size(56, 20);
+            this.comboBoxWidth.TabIndex = 8;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(243, 377);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 12);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "宽度：";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(360, 377);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(77, 12);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "多项式5A5A：";
+            // 
+            // textBoxPloy
+            // 
+            this.textBoxPloy.Location = new System.Drawing.Point(443, 372);
+            this.textBoxPloy.Name = "textBoxPloy";
+            this.textBoxPloy.Size = new System.Drawing.Size(87, 21);
+            this.textBoxPloy.TabIndex = 11;
             // 
             // FormDataConvert
             // 
@@ -574,6 +703,8 @@
             this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -626,5 +757,17 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnStartConvert;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.RichTextBox richTextBoxCRCResult;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.RichTextBox richTextBoxCRCInput;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnCRC;
+        private System.Windows.Forms.ComboBox comboBoxModel;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxPloy;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox comboBoxWidth;
+        private System.Windows.Forms.Label label19;
     }
 }
